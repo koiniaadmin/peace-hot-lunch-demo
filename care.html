@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Before/After Care — Peace Hot Lunch + Care (board demo)</title></head>
-<body style="margin:0;background:#0F172A">
-<nav style="background:#1E3A8A;border-bottom:3px solid #F59E0B;padding:12px 16px;font-family:Inter,system-ui,sans-serif;display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px">
-<span style="color:#fff;font-weight:800;margin-right:16px">Peace Hot Lunch + Care</span><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="index.html">Home</a><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="lunch.html">Hot Lunch</a><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="care.html">Care</a><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="office.html">Office</a><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="kitchen.html">Kitchen</a><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="teacher.html">Teachers</a></nav>
-<main style="padding:16px"><style>.pg{font-family:Inter,system-ui,sans-serif;background:#0F172A;color:#F8FAFC;border-radius:12px;padding:16px;max-width:980px;margin:0 auto 12px}.pg ul{margin:8px 0}.pg li{margin:4px 0}</style>
+<title>Before/After Care — Peace Hot Lunch + Care (board demo)</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="icon" href="assets/favicon.png"></head>
+<body style="margin:0;background:#F2F7FA;font-family:'Lato',system-ui,-apple-system,'Segoe UI',sans-serif;color:#23414F">
+<nav style="background:#146F99;border-bottom:3px solid #4C9A50;padding:10px 16px;font-family:'Poppins','Segoe UI',sans-serif;display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px">
+<img src="assets/logo.png" alt="Peace Lutheran Ministries" style="height:38px;width:auto;border-radius:50%;background:#fff;margin-right:10px;vertical-align:middle">
+<span style="color:#fff;font-weight:700;margin-right:16px">Peace Hot Lunch + Care</span><a style="color:#D6E9F2;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="index.html">Home</a><a style="color:#D6E9F2;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="lunch.html">Hot Lunch</a><a style="color:#D6E9F2;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="care.html">Care</a><a style="color:#D6E9F2;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="office.html">Office</a><a style="color:#D6E9F2;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="kitchen.html">Kitchen</a><a style="color:#D6E9F2;margin-right:12px;text-decoration:none;font-weight:600;white-space:nowrap" href="teacher.html">Teachers</a></nav>
+<main style="padding:16px"><style>.pg{font-family:'Lato',system-ui,-apple-system,'Segoe UI',sans-serif;background:#FFFFFF;color:#23414F;border:1px solid #D9E6EC;border-radius:12px;padding:16px;max-width:980px;margin:0 auto 12px;box-shadow:0 1px 3px rgba(20,111,153,.10)}.pg ul{margin:8px 0}.pg li{margin:4px 0}</style>
 <div class="pg"><p>Drop-in requests and weekly schedules. Scheduling only — no costs shown;</p><p>balance and Pay live on the hot lunch page.</p></div>
 <!-- shell-care.html — SAMPLE DATA concept demo for the board site.
      Self-contained, no network calls. -->
 <style>
-.pl-shell{font-family:Inter,system-ui,sans-serif;background:#0F172A;color:#F8FAFC;border-radius:12px;padding:16px;max-width:980px;margin:0 auto}
-.pl-banner{background:#92400E;border:1px solid #F59E0B;border-radius:8px;padding:8px 12px;font-weight:700;margin-bottom:12px}
-.pl-card{background:#1E293B;border:1px solid #334155;border-radius:10px;padding:12px;margin-bottom:12px}
-.pl-badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:700;background:#1E3A8A;margin:2px}
-.pl-btn{background:#F59E0B;color:#0F172A;font-weight:700;border:none;border-radius:8px;padding:8px 14px;cursor:pointer;margin:4px 4px 4px 0}
-.pl-shell select,.pl-shell input{background:#0F172A;color:#fff;border:1px solid #475569;border-radius:6px;padding:6px;margin:2px}
+.pl-shell{font-family:'Lato',system-ui,-apple-system,'Segoe UI',sans-serif;background:#FFFFFF;color:#23414F;border-radius:12px;padding:16px;max-width:980px;margin:0 auto}
+.pl-banner{background:#FDF0DC;border:1px solid #E8A838;border-radius:8px;padding:8px 12px;font-weight:700;margin-bottom:12px}
+.pl-card{background:#F5F9FB;border:1px solid #D9E6EC;border-radius:10px;padding:12px;margin-bottom:12px;box-shadow:0 1px 3px rgba(20,111,153,.10)}
+.pl-badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:700;background:#146F99;color:#fff;margin:2px}
+.pl-btn{background:#146F99;color:#fff;font-weight:700;border:none;border-radius:8px;padding:8px 14px;cursor:pointer;margin:4px 4px 4px 0}
+.pl-shell select,.pl-shell input{background:#FFFFFF;color:#23414F;border:1px solid #B9CFDA;border-radius:6px;padding:6px;margin:2px}
 .pl-table{width:100%;border-collapse:collapse;font-size:.85rem}
-.pl-table th,.pl-table td{border-bottom:1px solid #334155;padding:6px;text-align:left}
+.pl-table th,.pl-table td{border-bottom:1px solid #D9E6EC;padding:6px;text-align:left}
 .pl-mut{opacity:.7;font-size:.85rem}
-.pl-ok{color:#4ADE80;font-weight:700}
-</style>
+.pl-ok{color:#1E7E34;font-weight:700}
+.pl-shell h3,.pl-shell h4{font-family:'Poppins','Segoe UI',sans-serif;color:#146F99}</style>
 <div class="pl-shell">
   <div class="pl-banner">SAMPLE DATA — concept demo. Buttons show what would happen; nothing is saved.</div>
   <div class="pl-card"><h3 style="margin-top:0">Request a drop-in</h3>
@@ -40,5 +43,5 @@ function plDrop(){var c=document.getElementById("pl-cs").value,d=document.getEle
 </script>
 
 </main>
-<footer style="text-align:center;color:#64748B;font-family:system-ui;font-size:.8rem;padding:16px">Peace Lutheran Sun Prairie</footer>
+<footer style="text-align:center;color:#54595F;font-family:'Lato',system-ui,sans-serif;font-size:.8rem;padding:16px">Peace Lutheran School · 1007 Stonehaven Drive, Sun Prairie, WI</footer>
 </body></html>
