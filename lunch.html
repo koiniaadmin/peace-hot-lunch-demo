@@ -5,7 +5,7 @@
 <nav style="background:#1E3A8A;border-bottom:3px solid #F59E0B;padding:12px 16px;font-family:Inter,system-ui,sans-serif">
 <span style="color:#fff;font-weight:800;margin-right:16px">Peace Hot Lunch + Care</span><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600" href="index.html">Home</a><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600" href="lunch.html">Hot Lunch</a><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600" href="care.html">Care</a><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600" href="office.html">Office</a><a style="color:#F59E0B;margin-right:12px;text-decoration:none;font-weight:600" href="kitchen.html">Kitchen</a></nav>
 <main style="padding:16px"><style>.pg{font-family:Inter,system-ui,sans-serif;background:#0F172A;color:#F8FAFC;border-radius:12px;padding:16px;max-width:980px;margin:0 auto 12px}.pg ul{margin:8px 0}.pg li{margin:4px 0}</style>
-<div class="pg"><p>Monthly ordering for the demo family: Emma (Grade 2) and Liam (Grade 5).</p></div>
+<div class="pg"><p>Monthly ordering for the demo family: Emma (Grade 2) and Liam (Grade 5).</p><p>Note Oct 21: Grade 2 is on an orchard field trip, so Emma shows no lunch</p><p>while Liam orders normally.</p></div>
 <!-- shell-lunch.html — SAMPLE DATA concept demo for the board site.
      Self-contained, no network calls. Built from site-copy.md lunch section. -->
 <style>
@@ -19,6 +19,7 @@
 .pl-table th,.pl-table td{border-bottom:1px solid #334155;padding:6px;text-align:left}
 .pl-table select{background:#0F172A;color:#fff;border:1px solid #475569;border-radius:6px;padding:4px}
 .pl-mut{opacity:.7;font-size:.85rem}
+.pl-closed{color:#FBBF24;font-size:.8rem}
 .pl-ok{color:#4ADE80;font-weight:700}
 </style>
 <div class="pl-shell">
@@ -27,35 +28,39 @@
     <span class="pl-badge pl-kid">Emma · Grade 2</span>
     <span class="pl-badge pl-kid">Liam · Grade 5</span></div>
   <div class="pl-card"><h3 style="margin-top:0">Hot lunch — October 2026 <span class="pl-badge pl-open">OPEN until Sep 25</span></h3>
-    <p class="pl-mut">$4.50 every meal · order window 15th–25th prior month</p>
-    <table class="pl-table"><tr><th>Date</th><th>Menu</th><th>Emma (2)</th><th>Liam (5)</th></tr>
+    <p class="pl-mut">$4.50 every meal · one hot meal a day · order window 15th–25th prior month</p>
+    <table class="pl-table"><tr><th>Date</th><th>Meal</th><th>Emma (2)</th><th>Liam (5)</th></tr>
     <tbody id="pl-grid"></tbody></table>
     <p>Total: <strong id="pl-bal">$13.50</strong></p>
     <button class="pl-btn" onclick="plSave()">Save October orders</button> <span id="pl-savemsg"></span></div>
 </div>
 <script>
 var PL_MENUS=[
-["2026-10-01","Chicken Alfredo","PB&J Uncrustable"],["2026-10-02","Walking Tacos","Cheese Quesadilla"],
-["2026-10-05","Spaghetti & Meatballs","Garden Salad"],["2026-10-06","Chicken Nuggets","PB&J Uncrustable"],
-["2026-10-07","Cheese Pizza","Garden Salad"],["2026-10-08","Sloppy Joes","Cheese Quesadilla"],
-["2026-10-09","Mac & Cheese","PB&J Uncrustable"],["2026-10-12","Hot Dogs","Garden Salad"],
-["2026-10-13","Grilled Cheese + Tomato Soup","Cheese Quesadilla"],["2026-10-14","Breakfast Pancakes","PB&J Uncrustable"],
-["2026-10-15","Chicken Alfredo","Garden Salad"],["2026-10-16","Walking Tacos","PB&J Uncrustable"],
-["2026-10-19","Spaghetti & Meatballs","Cheese Quesadilla"],["2026-10-20","Chicken Nuggets","Garden Salad"],
-["2026-10-21","Cheese Pizza","PB&J Uncrustable"],["2026-10-22","Sloppy Joes","Garden Salad"],
-["2026-10-23","Mac & Cheese","Cheese Quesadilla"],["2026-10-26","Hot Dogs","PB&J Uncrustable"],
-["2026-10-27","Grilled Cheese + Tomato Soup","Garden Salad"],["2026-10-28","Breakfast Pancakes","Cheese Quesadilla"],
-["2026-10-29","Chicken Alfredo","PB&J Uncrustable"],["2026-10-30","Walking Tacos","Garden Salad"]
+["2026-10-01","Chicken Alfredo"],["2026-10-02","Walking Tacos"],
+["2026-10-05","Spaghetti & Meatballs"],["2026-10-06","Chicken Nuggets"],
+["2026-10-07","Cheese Pizza"],["2026-10-08","Sloppy Joes"],
+["2026-10-09","Mac & Cheese"],["2026-10-12","Hot Dogs"],
+["2026-10-13","Grilled Cheese + Tomato Soup"],["2026-10-14","Breakfast Pancakes"],
+["2026-10-15","Chicken Alfredo"],["2026-10-16","Walking Tacos"],
+["2026-10-19","Spaghetti & Meatballs"],["2026-10-20","Chicken Nuggets"],
+["2026-10-21","Cheese Pizza"],["2026-10-22","Sloppy Joes"],
+["2026-10-23","Mac & Cheese"],["2026-10-26","Hot Dogs"],
+["2026-10-27","Grilled Cheese + Tomato Soup"],["2026-10-28","Breakfast Pancakes"],
+["2026-10-29","Chicken Alfredo"],["2026-10-30","Walking Tacos"]
 ];
-var PL_PRE={ "2026-10-01|Emma":"entree", "2026-10-05|Liam":"entree", "2026-10-06|Emma":"alt" };
-function plCell(date,kid){var cur=PL_PRE[date+"|"+kid]||"none";
+// Field trip: Grade 2 (Emma) has no lunch this day; Grade 5 (Liam) orders normally.
+var PL_CLOSED={"2026-10-21":{"2":"Orchard field trip — no lunch"}};
+var PL_GRADES={"Emma":"2","Liam":"5"};
+var PL_PRE={ "2026-10-01|Emma":"entree", "2026-10-05|Liam":"entree", "2026-10-06|Emma":"entree" };
+function plCell(date,kid){var shut=(PL_CLOSED[date]||{})[PL_GRADES[kid]];
+ if(shut) return '<span class="pl-closed">'+shut+'</span>';
+ var cur=PL_PRE[date+"|"+kid]||"none";
  return '<select data-d="'+date+'" data-k="'+kid+'">'
  +'<option value="none"'+(cur==="none"?" selected":"")+'>No lunch</option>'
- +'<option value="entree"'+(cur==="entree"?" selected":"")+'>Entree</option>'
- +'<option value="alt"'+(cur==="alt"?" selected":"")+'>Alt</option></select>';}
+ +'<option value="entree"'+(cur==="entree"?" selected":"")+'>Hot lunch</option></select>';}
 function plRender(){var h="";
  for(var i=0;i<PL_MENUS.length;i++){var m=PL_MENUS[i];
-  h+="<tr><td>"+m[0]+"</td><td>"+m[1]+(m[2]?" / alt: "+m[2]:"")+"</td><td>"+plCell(m[0],"Emma")+"</td><td>"+plCell(m[0],"Liam")+"</td></tr>";}
+  h+="<tr><td>"+m[0]+"</td><td>"+m[1]+"</td><td>"+plCell(m[0],"Emma")+"</td><td>"+plCell(m[0],"Liam")+"</td></tr>";}
  document.getElementById("pl-grid").innerHTML=h;
  var sels=document.querySelectorAll("#pl-grid select");
  for(var j=0;j<sels.length;j++){sels[j].onchange=plTotal;}
