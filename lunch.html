@@ -33,6 +33,9 @@
     <tbody id="pl-grid"></tbody></table>
     <p>Total: <strong id="pl-bal">$13.50</strong></p>
     <button class="pl-btn" onclick="plSave()">Save October orders</button> <span id="pl-savemsg"></span></div>
+  <div class="pl-card"><h3 style="margin-top:0">Balance & invoices</h3>
+    <p>Family balance: <strong>$13.50</strong> <span class="pl-mut">(mock — cash/check to office)</span></p>
+    <p>Invoice October 2026 — $13.50 [draft] <button class="pl-btn" onclick="plPay()">Pay</button> <span id="pl-paymsg"></span></p></div>
 </div>
 <script>
 var PL_MENUS=[
@@ -71,6 +74,7 @@ function plTotal(){var n=plCount();
  document.getElementById("pl-bal").textContent="$"+(n*4.50).toFixed(2);}
 function plSave(){var n=plCount();
  document.getElementById("pl-savemsg").innerHTML='<span class="pl-ok">Saved (demo): '+n+' meals × $4.50 = $'+(n*4.50).toFixed(2)+'</span>';}
+function plPay(){document.getElementById("pl-paymsg").innerHTML='<span class="pl-ok">Mock payment confirmed (demo) — real build uses Vanco.</span>';}
 plRender();
 </script>
 
